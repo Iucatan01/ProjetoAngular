@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+  <header class="py-1 bg-light border-bottom mb-4">
+    <div class="container">
+      <div class="text-center my-4">
+        <img src="../assets/suitcase.png" alt="" height="100" />
+        <h1 class="text-uppercase fw-lighter">
+          Portal de <strong class="fw-bold">Vagas</strong>
+        </h1>
+        <p class="lead mb-0">
+  
+          Inscreva-se no nosso banco de oportunidades e fique atento às vagas
+          abertas
+        </p>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+
+  </div>
+  <!--page content-->
+  <div class="container">
+    <div class="row">
+      <!--jobs-->
+      <div class="col-8">
+        <div class="row">
+          <div *ngFor="let job of jobs"class="col-6 mb-2">
+            <app-job-card 
+            [title]="job.title" 
+            [description]="job.description" 
+            [img]="job.img"
+            ></app-job-card>
+          </div>           
+      </div>
+    </div>
+    <div class="col-4">
+      <form [formGroup]="formContent" (ngSubmit)="createJob()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titulo</label>
+          <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Descrição</label>
+          <input formControlName="description" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div> 
+      </form>
+     
+    </div>
+  </div>
+
+
+<app-footer></app-footer>
